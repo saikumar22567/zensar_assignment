@@ -1,0 +1,31 @@
+1.Write a program in C# to accept the name of the user and greet the user as:
+	“Hi! username 
+	Welcome to the world of C#”
+
+Source code:
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace HelloWorld
+{
+	public class Program
+	{
+		public static void Main(string[] args)
+		{
+		  Console.WriteLine("Please Enter Username:");
+		  string name=Console.Readline();
+		  Console.WriteLine("\"Hi!"+ name);
+		  Console.WriteLine("Welcome to the world of C#\"");
+		}
+	}
+}
+
+
+Output:
+
+"Hi!saikumar
+Welcome to the world of C#"

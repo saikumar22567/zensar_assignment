@@ -1,0 +1,32 @@
+2.Accept a number from the user and display whether the given number is an odd number or even number.
+
+Source code:
+------------
+
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("please a number:");
+		int a=Convert.ToInt32(Console.ReadLine());
+		if(a%2==0)
+			Console.WriteLine(a+" is an even number");
+		else
+			Console.WriteLine(a+" is an odd number");
+	}
+}
+
+
+output 1:
+
+please a number:
+90
+90 is an even number
+
+output 2:
+please a number:
+91
+91 is an odd number

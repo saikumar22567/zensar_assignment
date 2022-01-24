@@ -1,0 +1,125 @@
+4.Write a program which accepts marks of 5 students for C#,HTML and Sql (3 subjects),calculates the average and prints result as passed or failed
+If avg < 50 then failed else passed.
+
+Source code:
+------------
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		double avg1,avg2,avg3,avg4,avg5;
+		Console.WriteLine("please enter 3 subject marks of first_student:");
+		int c1=Convert.ToInt32(Console.ReadLine());
+		int h1=Convert.ToInt32(Console.ReadLine());
+		int s1=Convert.ToInt32(Console.ReadLine());
+
+		Console.WriteLine("please enter 3 subject marks of second_student:");
+		int c2=Convert.ToInt32(Console.ReadLine());
+		int h2=Convert.ToInt32(Console.ReadLine());
+		int s2=Convert.ToInt32(Console.ReadLine());
+		
+		Console.WriteLine("please enter 3 subject marks of thrid_student:");
+		int c3=Convert.ToInt32(Console.ReadLine());
+		int h3=Convert.ToInt32(Console.ReadLine());
+		int s3=Convert.ToInt32(Console.ReadLine());
+		
+		Console.WriteLine("please enter 3 subject marks of fourth_student:");
+		int c4=Convert.ToInt32(Console.ReadLine());
+		int h4=Convert.ToInt32(Console.ReadLine());
+		int s4=Convert.ToInt32(Console.ReadLine());
+		
+		Console.WriteLine("please enter 3 subject marks of fifth_student:");
+		int c5=Convert.ToInt32(Console.ReadLine());
+		int h5=Convert.ToInt32(Console.ReadLine());
+		int s5=Convert.ToInt32(Console.ReadLine());
+		
+	
+	        avg1=(c1+h1+s1)/3;
+		Console.WriteLine("\n");
+		Console.WriteLine("The average of first_stydent: "+avg1);
+		if(avg1>50)
+			Console.WriteLine("The first_student is passed");
+		else
+			Console.WriteLine("The first_student is failed");
+		
+		
+		avg2=(c2+h2+s2)/3;
+		Console.WriteLine("\n");
+		Console.WriteLine("The average of second_stydent: "+avg2);
+		if(avg2>50)
+			Console.WriteLine("The second_student is passed");
+		else
+			Console.WriteLine("The second_student is failed");
+		
+		
+		avg3=(c3+h3+s3)/3;
+		Console.WriteLine("\n");
+		Console.WriteLine("The average of thrid_stydent: "+avg3);
+		if(avg3>50)
+			Console.WriteLine("The thrid_student is passed");
+		else
+			Console.WriteLine("The thrid_student is failed");
+		
+		avg4=(c4+h4+s4)/3;
+		Console.WriteLine("\n");
+		Console.WriteLine("The average of fourth_stydent: "+avg4);
+		if(avg4>50)
+			Console.WriteLine("The fourth_student is passed");
+		else
+			Console.WriteLine("The fourth_student is failed");
+		
+		
+	        avg5=(c5+h5+s5)/3;
+		Console.WriteLine("\n");
+		Console.WriteLine("The average of fifth_stydent: "+avg5);
+		if(avg5>50)
+			Console.WriteLine("The fifth_student is passed");
+		else
+			Console.WriteLine("The fifth_student is failed");
+	}
+}
+
+
+output 1:
+please enter 3 subject marks of first_student:
+65
+76
+23
+please enter 3 subject marks of second_student:
+56
+87
+56
+please enter 3 subject marks of thrid_student:
+76
+98
+56
+please enter 3 subject marks of fourth_student:
+90
+70
+60
+please enter 3 subject marks of fifth_student:
+92
+0
+46
+
+The average of first_stydent: 54
+The first_student is passed
+
+
+The average of second_stydent: 66
+The second_student is passed
+
+
+The average of thrid_stydent: 76
+The thrid_student is passed
+
+
+The average of fourth_stydent: 73
+The fourth_student is passed
+
+
+The average of fifth_stydent: 46
+The fifth_student is failed

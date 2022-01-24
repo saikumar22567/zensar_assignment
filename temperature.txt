@@ -1,0 +1,32 @@
+5.Write a program in C# to display temperature in Celsius. Accept the temperature in Fahrenheit.
+
+Source code:
+------------
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		double c;
+		Console.WriteLine("Please enter fahrenheit temperature:");
+         double f = Convert.ToDouble(Console.ReadLine());
+         c = (f - 32) * 5 / 9;
+         Console.WriteLine("The Celsius Temperature is: " + c);
+	}
+}
+
+output 1:
+
+Please enter fahrenheit temperature:
+98
+The Celsius Temperature is:
+36.6666666666667
+
+output 2:
+
+Please enter fahrenheit temperature:
+76
+The Celsius Temperature is:
+24.4444444444444
