@@ -123,8 +123,8 @@ Select The Transaction:
 
 
 1.Deposit   2. Withdrawal
-2
-enter the amount to be withdraw:
+1
+enter the amount to be deposit:
 3000
 
 
@@ -135,7 +135,7 @@ The last four digit of Account number:  1234
 The name of the Account Holder:         saikumar
 The account type of the holder:         savings
 The balance before the transcation:     50000
-The balance after the transcation:      47000
+The balance after the transcation:      53000
 
 
 output 2:
