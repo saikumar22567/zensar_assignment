@@ -1,0 +1,35 @@
+Write a program in C# to accept a word from the user and display the length of it.
+
+Source code:
+------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace strlength
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter a string:");
+            string str=Console.ReadLine();
+            Console.WriteLine("The length of the string is: "+str.Length);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+output:
+------
+
+Please enter a string:
+zensar
+The length of the string is: 6

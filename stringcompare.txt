@@ -1,0 +1,56 @@
+Write a program in C# to accept two words from user and find out if they are same. 
+
+
+source code:
+-----------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace strcompare
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("please enter the first string:");
+            string string1 = Console.ReadLine();
+            Console.WriteLine("please enter the second string:");
+            string string2 = Console.ReadLine();
+            if (string1.Equals(string2) == true)
+            {
+                Console.WriteLine("Both strings are same");
+            }
+            else 
+            {
+                Console.WriteLine("Both strings are not same");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+output 1:
+--------
+
+please enter the first string:
+zensar
+please enter the second string:
+zensar
+Both strings are same
+
+
+output 2:
+--------
+
+please enter the first string:
+ram
+please enter the second string:
+laxam
+Both strings are not same

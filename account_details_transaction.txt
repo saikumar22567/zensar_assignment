@@ -1,0 +1,203 @@
+1. Create a class called Accounts which has data members like Account no, Customer name, Account type, Transaction type (d/w), amount, balance
+D->Deposit
+W->Withdrawal
+
+-write a function that updates the balance depending upon the transaction type
+
+	-If transaction type is deposit call the credit(int amount) function and update balance
+	-If transaction type is withdraw call debit(int amt)function and update balance
+-Pass the other information like Acount no,name,acc type through constructor
+-call the show data method to display the values.
+
+
+source code
+-----------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace balance
+{
+    class Account
+    {
+        public int account_no;
+        public string name;
+        public string account_type;
+        public int amount;
+        public float before_balance;
+        public float after_balance;
+        public Account()
+        {
+
+            Console.WriteLine("Enter the last four digits of account number:");
+            account_no = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter name of the account holder:");
+            name=Console.ReadLine();
+            Console.WriteLine("enter the type of the account:");
+            account_type=Console.ReadLine();
+            Console.WriteLine("enter the balance amount of the account before transaction:");
+            before_balance=Convert.ToInt32(Console.ReadLine());
+
+        }
+        public void Deposit()
+        {
+            Console.WriteLine("enter the amount to be despoit :");
+            amount=Convert.ToInt32(Console.ReadLine());
+            after_balance = before_balance + amount;
+        }
+        public void Withdrawal()
+        {
+            Console.WriteLine("enter the amount to be withdraw:");
+            amount = Convert.ToInt32(Console.ReadLine());
+            if(before_balance>=amount)
+            {
+                after_balance=before_balance-amount;
+            }
+            else
+            {
+                Console.WriteLine("Insufficient balance in your account");
+                after_balance=before_balance;
+            }
+
+        }
+
+     
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = 0;
+            Account acc = new Account();
+            Console.WriteLine("\n");
+            Console.WriteLine("Select The Transaction: ");
+            Console.WriteLine("\n");
+            Console.Write("1.Deposit ");
+            Console.WriteLine("  2. Withdrawal");
+            t = Convert.ToInt32(Console.ReadLine());
+            if (t == 1)
+            {
+                acc.Deposit();
+            }
+            else if (t == 2)
+            {
+                acc.Withdrawal();
+            }
+
+            else
+            {
+                Console.WriteLine("YOUR TRANSACTION WAS CANCELLED YOU ENTERED INVALID NUMBER");
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine("______account Details______");
+            Console.WriteLine("\n");
+            Console.WriteLine("The last four digit of Account number:\t" + acc.account_no);
+            Console.WriteLine("The name of the Account Holder:\t\t" + acc.name);
+            Console.WriteLine("The account type of the holder:\t\t" + acc.account_type);
+            Console.WriteLine("The balance before the transcation:\t" + acc.before_balance);
+            Console.WriteLine("The balance after the transcation:\t" + acc.after_balance);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+output 1:
+--------
+
+Enter the last four digits of account number:
+1234
+enter name of the account holder:
+saikumar
+enter the type of the account:
+savings
+enter the balance amount of the account before transaction:
+50000
+
+
+Select The Transaction:
+
+
+1.Deposit   2. Withdrawal
+2
+enter the amount to be withdraw:
+3000
+
+
+______account Details______
+
+
+The last four digit of Account number:  1234
+The name of the Account Holder:         saikumar
+The account type of the holder:         savings
+The balance before the transcation:     50000
+The balance after the transcation:      47000
+
+
+output 2:
+--------
+
+Enter the last four digits of account number:
+2349
+enter name of the account holder:
+manoj
+enter the type of the account:
+savings
+enter the balance amount of the account before transaction:
+50000
+
+
+Select The Transaction:
+
+
+1.Deposit   2. Withdrawal
+2
+enter the amount to be withdraw:
+10000
+
+
+______account Details______
+
+
+The last four digit of Account number:  2349
+The name of the Account Holder:         manoj
+The account type of the holder:         savings
+The balance before the transcation:     50000
+The balance after the transcation:      40000
+
+
+ouput 3:
+-------
+Enter the last four digits of account number:
+2345
+enter name of the account holder:
+tharun
+enter the type of the account:
+current
+enter the balance amount of the account before transaction:
+40000
+
+
+Select The Transaction:
+
+
+1.Deposit   2. Withdrawal
+2
+enter the amount to be withdraw:
+50000
+Insufficient balance in your account
+
+
+______account Details______
+
+
+The last four digit of Account number:  2345
+The name of the Account Holder:         tharun
+The account type of the holder:         current
+The balance before the transcation:     40000
+The balance after the transcation:      40000
+

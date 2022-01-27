@@ -1,0 +1,52 @@
+Write a program in C# to accept a word from the user and display the reverse of it. 
+
+source code:
+-----------
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace strlength
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("please enter the string:");
+            string mystring = Console.ReadLine();
+            string revstring=string.Empty;
+            int strlength;
+            strlength = mystring.Length;
+            for(int i=strlength-1;i>=0; i--)
+            {
+                revstring +=mystring[i];
+            }
+            Console.WriteLine("The reverse string is : \n"+revstring);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+output 1:
+---------
+
+please enter the string:
+saikumar
+The reverse string is :
+ramukias
+
+output 2:
+---------
+
+please enter the string:
+alavala
+The reverse string is :
+alavala

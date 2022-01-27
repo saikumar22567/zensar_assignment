@@ -1,0 +1,214 @@
+2. Create a class called student which has data members like rollno, name, class, SEM, branch,int [] marks=new int marks [5](marks of 5 subjects )
+-Write a method called displayresult, which should calculate the average marks
+-If marks of any one subject is less than 35 print result as failed
+-If marks of all subject is >35 but average is < 50 then also print result as failed
+-If avg > 50 then print result as passed.
+-Pass the details of student like rollno, name, class, SEM, branch in constructor
+-Write a Display Data method to display all values.
+
+
+source code:
+------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace studentavg
+{
+    class Students       //class
+    {
+        public string rollno;
+        public string name;
+        public int classe;
+        public string branch;
+        public string sem;
+        public int[] marks = new int[5];
+        public void DisplayResult()             //method
+        {
+
+            int avg = 0, i, sum = 0;
+            int c1 = 0, c2 = 0, c3 = 0;
+
+            Console.WriteLine("enter the 5 subject marks of the student:");
+            for (i = 0; i < 5; i++)
+            {
+                sum += marks[i];
+            }
+            avg = sum / 5;
+            Console.WriteLine("The average of the student:" + avg);
+            for (i = 0; i < 5; i++)
+            {
+                if (marks[i] < 35)
+                {
+                    c1++;
+                }
+                else if (marks[i] >= 35 && avg < 50)
+                {
+                    c2++;
+                }
+                else if (avg > 50)
+                {
+                    c3++;
+                }
+
+            }
+            if (c1 >= 1)
+            {
+                Console.WriteLine("The student is failed");
+            }
+            else if (c2 >= 1)
+            {
+                Console.WriteLine("The student is failed");
+            }
+            else if (c3 >= 1)
+            {
+                Console.WriteLine("The student is passed");
+            }
+        }
+        public Students()          //constructor
+        {
+            Console.WriteLine("enter the rollno of the student:");
+            rollno = Console.ReadLine();
+            Console.WriteLine("enter the name of the student:");
+            name = Console.ReadLine();
+            Console.WriteLine("enter the class of the student:");
+            classe = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the branch name of the student:");
+            branch = Console.ReadLine();
+            Console.WriteLine("enter the present semster of the student:");
+            sem = Console.ReadLine();
+            Console.WriteLine("enter the 5 subject marks of the student:");
+            for (int i = 0; i < 5; i++)
+            {
+                marks[i] = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+
+    }
+
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Students mybio = new Students();
+	    Console.WriteLine("\n");
+	    Console.WriteLine("___________Details of the student___________");
+	    Console.WriteLine("\n");
+            Console.WriteLine("The rollno of the student: " + mybio.rollno);
+            Console.WriteLine("The name of the student: " + mybio.name);
+            Console.WriteLine("The class of the student: " + mybio.classe);
+            Console.WriteLine("The branch name of the students: " + mybio.branch);
+            Console.WriteLine("The present semster of the students: " + mybio.sem);
+            mybio.DisplayResult();
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+
+
+output 1:
+--------
+
+enter the rollno of the student:
+s002
+enter the name of the student:
+sai
+enter the class of the student:
+16
+enter the branch name of the student:
+IT
+enter the present semster of the student:
+7
+enter the 5 subject marks of the student:
+65
+78
+46
+94
+30
+
+_____________Details of the student____________
+
+The rollno of the student: s002
+The name of the student: sai
+The class of the student: 16
+The branch name of the students: IT
+The present semster of the students: 7
+enter the 5 subject marks of the student:
+The average of the student:62
+The student is failed
+
+
+output 2:
+---------
+
+enter the rollno of the student:
+s003
+enter the name of the student:
+tharun
+enter the class of the student:
+16
+enter the branch name of the student:
+cse
+enter the present semster of the student:
+6
+enter the 5 subject marks of the student:
+36
+45
+43
+49
+39
+
+
+___________Details of the student___________
+
+
+The rollno of the student: s003
+The name of the student: tharun
+The class of the student: 16
+The branch name of the students: cse
+The present semster of the students: 6
+enter the 5 subject marks of the student:
+The average of the student:42
+The student is failed
+
+output 3:
+---------
+
+enter the rollno of the student:
+s001
+enter the name of the student:
+manoj
+enter the class of the student:
+16
+enter the branch name of the student:
+civil
+enter the present semster of the student:
+6
+enter the 5 subject marks of the student:
+67
+87
+97
+57
+77
+
+
+___________Details of the student___________
+
+
+The rollno of the student: s001
+The name of the student: manoj
+The class of the student: 16
+The branch name of the students: civil
+The present semster of the students: 6
+enter the 5 subject marks of the student:
+The average of the student:77
+The student is passed
