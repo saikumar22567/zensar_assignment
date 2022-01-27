@@ -1,0 +1,159 @@
+3.Create an Abstract class Student with  Name, StudentId, Grade as members and also an abstract method Boolean Ispassed(grade) which takes grade as an input and checks whether student passed the course or not.  
+
+Create 2 Sub classes Undergraduate and Graduate that inherits all members of the student and overrides Ispassed() method 
+
+For the UnderGrad class, if the grade is above 70.0, then isPassed returns true, otherwise it returns false. For the Grad class, if the grade is above 80.0, then isPassed returns true, otherwise returns false.
+
+
+source code:
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace grad
+{
+    abstract class StudentClass
+    {
+        public string stdname;
+        public string studentid;
+
+
+        abstract public Boolean Ispassed(float grade);
+    }
+
+    class undergraduate : StudentClass
+    {
+        public override Boolean Ispassed(float grade)
+        {
+
+
+            if (grade >= 70.0f)
+            {
+
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+
+        }
+        public void GetData()
+        {
+            Console.WriteLine("enter the name of the student in UG:");
+            stdname = Console.ReadLine();
+            Console.WriteLine("the student id in the UG:");
+            studentid = Console.ReadLine();
+
+        }
+        public void ShowData()
+        {
+            Console.WriteLine("The name of the student is:\t" + stdname);
+            Console.WriteLine("The student id in under graduate:\t" +studentid);
+        }
+
+    }
+    class graduate : StudentClass
+    {
+        public override Boolean Ispassed(float grade)
+        {
+
+            if (grade >= 80.0f)
+            {
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+        public void GetData()
+        {
+            Console.WriteLine("enter the name of the student in G:");
+            stdname = Console.ReadLine();
+            Console.WriteLine("the student id in the G:");
+            studentid = Console.ReadLine();
+        }
+        public void ShowData()
+        {
+            Console.WriteLine("The name of the student is:\t" + stdname);
+            Console.WriteLine("The student id in  graduate:\t" +studentid);
+        }
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                undergraduate ugrad = new undergraduate();
+                graduate ggrad = new graduate();
+                ugrad.GetData();
+                ggrad.GetData();
+                Console.WriteLine("\n");
+                Console.WriteLine("_____________Details of undergradute___________");
+                Console.WriteLine("\n");
+                bool t1;
+                t1 = ugrad.Ispassed(77.5f);
+                ugrad.ShowData();
+                if (t1 == true)
+                    Console.WriteLine("The student is passed the under_graduation course");
+                else if (t1 == false)
+                    Console.WriteLine("The student is failed the under_graduation course ");
+
+                Console.WriteLine("\n");
+                Console.WriteLine("____________Details of Graduate________________");
+                Console.WriteLine("\n");
+                bool t2;
+                t2 = ggrad.Ispassed(72.5f);
+                ggrad.ShowData();
+                if (t2 == true)
+                    Console.WriteLine("The student is passed in the graduation course");
+                else if (t2 == false)
+                    Console.WriteLine("The student is failed in the graduation course ");
+                Console.ReadLine();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+output:
+------
+
+enter the name of the student in UG:
+sai
+the student id in the UG:
+u002
+enter the name of the student in G:
+tharun
+the student id in the G:
+g003
+
+
+_____________Details of undergradute___________
+
+
+The name of the student is:     sai
+The student id in under graduate:       u002
+The student is passed the under_graduation course
+
+
+____________Details of Graduate________________
+
+
+The name of the student is:     tharun
+The student id in  graduate:    g003
+The student is failed in the graduation course
+
+
+
+
