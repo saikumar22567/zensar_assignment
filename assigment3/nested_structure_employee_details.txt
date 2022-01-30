@@ -1,0 +1,106 @@
+5. Write a program in C# Sharp to create a nested structure to store two data for an employee in an array. 
+
+Test Data:
+
+Create a nested structure and store data in an array :                              
+-------------------------------------------------------                          
+Name of the employee : H.Rana                                                    
+Input day of the birth : 05                                                      
+Input month of the birth : 02                                                    
+Input year for the birth : 58                                                    
+                                                                                 
+Name of the employee : S.Mathur                                                  
+Input day of the birth : 04                                                      
+Input month of the birth : 08                                                    
+Input year for the birth : 59
+
+
+source code:
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace nested
+{
+    class Program
+    {
+        struct employee
+        {
+            public string employee_name;
+            public dtObirth Date;
+        }
+        struct dtObirth
+        {
+            public int day;
+            public int month;
+            public int year;
+        }
+        static void Main(string[] args)
+        {
+            int dd = 0, mm = 0, yy = 0;
+
+            employee[] e = new employee[10];
+
+            for (int i = 0; i <2; i++)
+            {
+                Console.Write("The Name of the employee : ");
+                string name = Console.ReadLine();
+                e[i].employee_name = name;
+
+                Console.Write("Input day of the birth : ");
+                dd = Convert.ToInt32(Console.ReadLine());
+                e[i].Date.day = dd;
+
+                Console.Write("Input month of the birth : ");
+                mm = Convert.ToInt32(Console.ReadLine());
+                e[i].Date.month = mm;
+
+                Console.Write("Input year for the birth : ");
+                yy = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                e[i].Date.year = yy;
+            }
+            Console.WriteLine("______________Employee Details___________________");
+            for (int i = 0; i < 2; i++)
+            {
+                
+                Console.WriteLine("\n");
+                Console.WriteLine($"The Name of the Employee : {e[i].eName}");
+                Console.WriteLine();
+                Console.WriteLine($"The Date Of Birth : {e[i].Date.Day}/{e[i].Date.Month}/19{e[i].Date.Year}");
+            }
+	    Console.ReadLine();
+        }
+    }
+}
+
+
+output 1:
+--------
+
+Name of the employee : H.Rana                                                    
+Input day of the birth : 05                                                      
+Input month of the birth : 02                                                    
+Input year for the birth : 58                                                    
+                                                                                 
+Name of the employee : S.Mathur                                                  
+Input day of the birth : 04                                                      
+Input month of the birth : 08                                                    
+Input year for the birth : 59
+
+
+______________Employee Details___________________
+
+
+The Name of the Employee:   H.Rana
+
+The Date Of Birth of the employee:      5/2/1958
+
+
+The Name of the Employee:   S.Mathur
+
+The Date Of Birth of the employee:      4/8/1959

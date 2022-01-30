@@ -1,0 +1,90 @@
+4. Write a program in C# Sharp to declare a structure called Books with a property, 
+a method to display the value of Book_id, and a private field called Book_id (int).
+
+
+source code:
+-----------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bookproperty
+{
+    struct Books
+    {
+        public string name;
+        private int BookId;
+
+        public int n
+        {
+            get
+            {
+                return BookId;
+            }
+            set
+            {
+                BookId = value;
+            }
+        }
+        public void GetData()
+        {
+            Console.WriteLine("please the id of the book:");
+            n=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please the name of the book:");
+            name = Console.ReadLine();
+
+        }
+        public void ShowData()
+        {
+            Console.WriteLine("The ID of the Book is:\t"+n);
+            Console.WriteLine("The Book Name is:\t"+name);
+            
+        }
+    }
+    class Program
+    {
+        static void Main()
+        {
+            Books book = new Books();
+            book.GetData();
+            Console.WriteLine("\n");
+            Console.WriteLine("_________Book of the details___________");
+            Console.WriteLine("\n");
+	    book.ShowData();
+            Console.ReadKey();
+        }
+    }
+}
+
+
+output 1:
+--------
+
+please the id of the book:
+4347
+Please the name of the book:
+All is Well
+
+_________Book of the details___________
+
+
+The ID of the Book is:  4347
+The Book Name is:       All is Well
+
+output 2:
+--------
+
+please the id of the book:
+2657
+Please the name of the book:
+Proofs for the Existence of God
+
+
+_________Book of the details___________
+
+
+The ID of the Book is:  2657
+The Book Name is:       Proofs for the Existence of God

@@ -1,0 +1,137 @@
+2. Write a class called LoanProcess with Loan_No, Customer Name, LoanAmount, EMI_Amount, Account_Balance as its members. 
+Create a method calculate_EMI() for the LoanAmount , with the rate of interest as 13% for a total of 3 years and store it in the EMI_Amount.  
+The rest of the information to be passed through constructors. 
+Write another function CheckBalance() which checks if the Account_Balance is less than the EMI_AMount. 
+If yes then throw a custom exception. Display " Not Sufficient Balance to repay Loan" in the finally. Give explanatory comments.
+
+source code
+-----------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace emi
+{
+    class AmountException : ApplicationException
+    {
+        public AmountException(string msg) : base(msg)
+        {
+
+        }
+    }
+    class LoanProcess
+    {
+        public string loan_id;
+        public string customer_name;
+        public double loan_amount;
+        public double emi_amount;
+        public double account_balance;
+        public void calculate_EMI()
+        {
+
+            Console.WriteLine("please the enter Loan Amount");
+            loan_amount = Convert.ToDouble(Console.ReadLine());
+            emi_amount = loan_amount * 0.13 * 3;
+            
+        }
+        public LoanProcess(string loan_no,string cust_name,double acc_balance)
+        {
+            loan_id = loan_no;
+            customer_name = cust_name;
+            account_balance = acc_balance;
+        }
+        
+        public void ShowData()
+        {
+            Console.WriteLine("The loan number of the customer  is:\t" + loan_id);
+            Console.WriteLine("The customer name as per the loan details is:\t" + customer_name);
+            Console.WriteLine("The amount balance of the customer is:\t" + account_balance);
+            Console.WriteLine("The loan amount has to be taken from the bank is:\t"+loan_amount);
+            Console.WriteLine("The emi amount has to be repay:\t " + emi_amount);
+        }
+        public void CheckBalance()
+        {
+            if (account_balance < emi_amount)
+            {
+                throw (new AmountException("Unsufficient balance to repay the  loan"));
+            }
+            else
+            {
+                Console.WriteLine("Loan Payment successfull completed");
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            LoanProcess myloan = new LoanProcess("L234", "Saikumar", 54300);
+            
+
+
+            try
+            {
+                myloan.calculate_EMI();
+                Console.WriteLine("\n");
+                Console.WriteLine("____________The Loan Details of the Customer___________");
+                Console.WriteLine("\n");
+                myloan.ShowData();
+                myloan.CheckBalance();
+            }
+            catch (AmountException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+
+output 1:
+--------
+please the enter Loan Amount
+30000
+
+
+____________The Loan Details of the Customer___________
+
+
+The loan number of the customer  is:    L234
+The customer name as per the loan details is:   Saikumar
+The amount balance of the customer is:  54300
+The loan amount has to be taken from the bank is:       30000
+The emi amount has to be repay:  11700
+Loan Payment successfull completed
+
+
+output 2:
+--------
+
+please the enter Loan Amount
+200000
+
+
+____________The Loan Details of the Customer___________
+
+
+The loan number of the customer  is:    L234
+The customer name as per the loan details is:   Saikumar
+The amount balance of the customer is:  54300
+The loan amount has to be taken from the bank is:       200000
+The emi amount has to be repay:  78000
+Unsufficient balance to repay the  loan
+
+
+
+
+
+
+
+
+
+

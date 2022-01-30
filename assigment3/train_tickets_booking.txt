@@ -1,0 +1,126 @@
+1. Create a console application to book train tickets. Create a Passanger class with (Name, Age) and 
+write a function called TicketBooking(no_of_tickets) that takes no.of tickets to be booked. 
+If the no of tickets is > 5 per booking, raise an user defined exception, and print "cannot book more than 2 tickets". Else Print  "Ticket Booked Successfully".
+Add a Test class to call TicketBooking method by accepting all required details.
+
+
+source code:
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace traintickets
+{
+    class TicketBooking : ApplicationException
+    {
+        public TicketBooking(string msg) : base(msg)
+        {
+
+        }
+    }
+    class Passenger
+    {
+        public string name;
+        public int age;
+        public int no_of_ticket;
+
+        public void TicketBooking( )
+        {
+
+         
+            Console.WriteLine("Please no of tickets to be book:");
+            no_of_ticket=Convert.ToInt32(Console.ReadLine());
+            if (no_of_ticket > 5)
+            {
+		Console.WriteLine("\n");
+                Console.WriteLine("Cannot Book more than 5 tickets");
+            }
+            else
+            {
+                throw (new TicketBooking("Ticket Booking Successfully"));
+            }
+        }
+        public void Getdata()
+        {
+            Console.WriteLine("Please enter the name of the passenger:");
+            name=Console.ReadLine();
+            Console.WriteLine("Enter the age of the passenger:");
+            age=Convert.ToInt32(Console.ReadLine());
+
+        }
+        public void ShowDetails()
+        {
+            Console.WriteLine("The name of the passenger tickets booked by:\t"+name);
+            Console.WriteLine("The age of the passenger tickets booked by:\t" + age);
+            if(no_of_ticket<=5)
+            {
+                Console.WriteLine("Total   "+no_of_ticket+"   has to be booked");
+            }
+            
+        }
+
+
+    }
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            Passenger train = new Passenger();
+            
+            try
+            {
+                train.Getdata();
+                train.TicketBooking();
+                
+                
+            }
+            catch (TicketBooking e)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("______Tickets Booking Details__________");
+                Console.WriteLine("\n");
+                train.ShowDetails();
+                Console.WriteLine(e.Message);
+            }
+            Console.Read();
+        }
+    }
+}
+
+
+output 1
+--------
+
+Please enter the name of the passenger:
+sai
+Enter the age of the passenger:
+32
+Please no of tickets to be book:
+4
+
+
+______Tickets Booking Details__________
+
+
+The name of the passenger tickets booked by:    sai
+The age of the passenger tickets booked by:     32
+Total   4   has to be booked
+Ticket Booking Successfully
+
+
+output 2
+--------
+
+Please enter the name of the passenger:
+tharun
+Enter the age of the passenger:
+31
+Please no of tickets to be book:
+7
+
+
+Cannot Book more than 5 tickets
