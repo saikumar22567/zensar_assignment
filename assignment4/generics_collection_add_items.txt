@@ -1,0 +1,75 @@
+Create a simple Stationery application to add items and display added items using Generic collections
+
+
+source code:
+-----------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace items
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> mylist = new List<int>();
+            mylist.Add(14);
+            mylist.Add(22);
+            mylist.Add(83);
+            mylist.Add(43);    
+            mylist.Add(53);
+            mylist.Add(62);
+            mylist.Add(74);
+            mylist.Add(8);
+            mylist.Add(95);
+            mylist.Add(10);
+            Console.WriteLine("Items in the list are:");
+            foreach (int items in mylist)
+            {
+                Console.WriteLine(items);
+            }
+            mylist.Sort();
+            Console.WriteLine("\n");
+            Console.WriteLine("Items after sorted in the list are:");
+            foreach (int items in mylist)
+            {
+                Console.WriteLine(items);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+ouput:
+------
+
+Items in the list are:
+14
+22
+83
+43
+53
+62
+74
+8
+95
+10
+
+
+Items after sorted in the list are:
+8
+10
+14
+22
+43
+53
+62
+74
+83
+95

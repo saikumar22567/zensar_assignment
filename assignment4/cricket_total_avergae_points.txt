@@ -1,0 +1,79 @@
+Write a program to find the Sum and the Average points scored by the teams in the IPL. Create a Class called Cricket that 
+has a function called Pointscalculation(int no_of_matches) that takes no.of matches as input and accepts that many scores
+from the user. The function should then display the Average and Sum of the scores
+
+
+source code:
+-----------
+
+
+using System;
+using System.Collections.Generic;
+
+
+namespace cricket
+{
+    class Crickets
+    {
+        public int sum;
+        public double avg;
+        int[] score;
+
+        public void Pointscalculation(int no_of_matches)
+        {
+            score = new int[no_of_matches];
+            Console.WriteLine("Scores of the "+no_of_matches+" matches are:");
+            Console.WriteLine();
+            for (int i = 0; i < no_of_matches; i++)
+            {
+                Console.WriteLine("The Score {0} Match : ", i + 1);
+                score[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < score.Length; i++)
+            {
+                sum = sum + score[i];
+            }
+	    Console.WriteLine("\n");
+            Console.WriteLine("The total scores in all the matches: "+sum);
+            avg = (double)sum / score.Length;
+	    Console.WriteLine("\n");
+            Console.WriteLine("The average score in all the matches : "+ avg);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int NoOfMatches;
+            Console.WriteLine("Enter the number of matches to be played till now:");
+            NoOfMatches = int.Parse(Console.ReadLine());
+            Crickets C = new Crickets();
+            C.Pointscalculation(NoOfMatches);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+output:
+-------
+
+Enter the number of matches to be played till now:
+5
+Scores of the 5 matches are:
+
+The Score 1 Match :
+67
+The Score 2 Match :
+58
+The Score 3 Match :
+20
+The Score 4 Match :
+0
+The Score 5 Match :
+120
+
+The total scores in all the matches: 265
+
+The average score in all the matches : 53
+

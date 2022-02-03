@@ -1,0 +1,95 @@
+1. Create a class library CalculateConcession ()  that takes age as an input and calculates concession for travel as below:
+If age<=5 then “Little Champs- Free Ticket” should be displayed
+If age >60 then calculate 30% concession on the totalfare(Which is a constant Eg:500/-) and Display “ Senior Citizen” + Calculated Fare
+Else “Print Ticket Booked” + Fare. 
+Create a Console application with a Class called Program which has TotalFare as Constant, Name, Age.  Accept Name, Age from the user and call the CalculateConcession() function
+
+source code:
+-----------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace totalfares
+{
+    interface Ifare
+    {
+        void CalculateConcession();
+    }
+    class tickets:Ifare
+    {
+        public void CalculateConcession()
+        {
+            Console.WriteLine("please enter the age:");
+            int age=Convert.ToInt32(Console.ReadLine());
+            const int fare = 500;
+            if(age<=5)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("Little Champs- Free Ticket");
+            }
+            else if(age>60)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Senior Citizen and the fare charge is: " + (fare*0.3));
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Print Ticket Booked and the fare charge is: " + fare);
+            }
+
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            tickets myticket = new tickets();
+            Console.WriteLine("please enter the name of the passenger:");
+
+            string name;
+            name = Console.ReadLine();
+            myticket.CalculateConcession();
+            Console.ReadKey();
+
+        }
+    }
+}
+
+
+
+output 1:
+--------
+
+please enter the name of the passenger:
+sai
+please enter the age:
+22
+
+Print Ticket Booked and the fare charge is: 500
+
+ouput 2:
+-------
+
+please enter the name of the passenger:
+tharun
+please enter the age:
+61
+
+Senior Citizen and the fare charge is: 150
+
+output 3:
+---------
+
+please enter the name of the passenger:
+uma
+please enter the age:
+4
+
+
+Little Champs- Free Ticket
