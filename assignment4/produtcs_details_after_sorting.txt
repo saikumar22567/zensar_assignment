@@ -1,0 +1,93 @@
+Create a Class called Products with Productid, Product Name, Price. Accept 10 Products, 
+sort them based on the price, and display the sorted Products
+
+
+source code:
+-----------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace productdetails
+{
+    class Product
+    {
+        Dictionary<string, double> p = new Dictionary<string, double>();
+        public void Details()
+        {
+            Console.WriteLine("please enter the details of any 10 produtcs:");
+            for (int i = 0; i < 10; i++)
+            {
+                p.Add(Console.ReadLine(), double.Parse(Console.ReadLine()));
+
+            }
+        }
+        public void sort()
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("_____product datils after sorted____________");
+            Console.WriteLine("\n");
+            foreach (KeyValuePair<string, double> price in p.OrderBy(key => key.Value))
+            {
+                Console.WriteLine("Product Name: {0} ,Price: {1} ", price.Key, price.Value);
+            }
+        }
+        class product
+        {
+            static void Main()
+            {
+                Product p_details = new Product();
+                p_details.Details();
+                p_details.sort();
+                Console.ReadLine();
+            }
+        }
+
+    }
+
+}
+
+
+
+ouput:
+-----
+
+please enter the details of any 10 produtcs:
+shirt
+450
+ironbox
+600
+soap
+40
+cup
+20
+bat
+1800
+ball
+85
+mobile
+11999
+bulb
+90
+dinningtable
+5500
+ricebag
+1250
+
+_____product datils after sorted____________
+
+Product Name: cup ,Price: 20
+Product Name: soap ,Price: 40
+Product Name: ball ,Price: 85
+Product Name: bulb ,Price: 90
+Product Name: shirt ,Price: 450
+Product Name: ironbox ,Price: 600
+Product Name: ricebag ,Price: 1250
+Product Name: bat ,Price: 1800
+Product Name: dinningtable ,Price: 5500
+Product Name: mobile ,Price: 11999
