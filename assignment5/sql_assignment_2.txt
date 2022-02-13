@@ -1,0 +1,385 @@
+1. Retrieve a list of MANAGERS.
+
+Query:-
+-------
+
+>> select empno as Employee_Id,ename as Employee_Name,job as Name_Of_The_Job from employee where job='MANAGER';
+
+
+Output:-
+--------
+
+Employee_Id	Employee_Name		Name_Of_The_Job
+-----------	-------------		---------------
+
+7566		  JONES			  MANAGER
+
+7698		  BLAKE			  MANAGER
+
+7782		  CLARK			  MANAGER
+
+
+2. Find out salary of both MILLER and SMITH.
+
+Query:-
+-------
+
+>>select ename as Employee_Name,sal as Salary from employee where ename IN ('MILLER','SMITH');
+
+Output:-
+--------
+
+Employee_Name       Salary
+-------------	    ------
+
+SMITH		     800
+
+MILLER		     1300
+
+
+3. Find out the names and salaries of all employees earning more than 1000 per  month.
+  
+Query:-
+-------
+
+>>select ename as Employee_Name,sal as Salary from employee where sal > 1000;
+
+Output:-
+-------
+
+Employee_Name		Salary
+-------------		--------
+
+ALLEN			1600
+
+WARD			1250
+
+JONES			2975
+
+MARTIN			1250
+
+BLAKE			2850
+
+CLARK			2450
+
+SCOTT			3000
+
+KING			5000
+
+TURNER			1500
+
+ADAMS			1100
+
+FORD			3000
+
+MILLER			1300
+
+
+4. Display the names and salaries of all employees except JAMES. 
+
+Query:-
+-------
+
+>>select ename as Employee_Name,sal as Salary from employee where ename !='JAMES'
+
+
+Output:-
+--------
+
+Employee_Name		Salary
+-------------		------
+
+SMITH            	800	
+  
+ALLEN          	 	1600
+     
+WARD	    	 	1250
+     
+JONES        	 	2975
+            
+MARTIN     	 	1250
+        
+BLAKE 	      	 	2850
+            
+CLARK        	 	2450
+            
+SCOTT            	3000
+            
+KING             	5000
+            
+TURNER       	 	1500
+        
+ADAMS            	1100           
+     
+FORD         	 	3000  
+          
+MILLER		 	1300
+
+
+5. Find out the details of employees whose names begin with ‘S’.
+
+Query:-
+-------
+
+>>select * from employee where ename like 'S%';
+
+Output:-
+--------
+
+EMPNO   	ENAME		JOB	 	  MGR		   HIREDATE	     SAL	    COMM 	  DEPTNO
+------		-----	      --------- 	---------	  ----------	   ------	   -------	---------
+
+7369    	SMITH      	CLERK		7902   		  17-DEC-80         800	     	    NULL     	   20
+
+7788  		SCOTT     	ANALYST       	7566    	  19-APR-87         3000  	    NULL           20
+
+
+6. Find out the names of all employees that have ‘A’ anywhere in their name.
+
+Query:-
+-------
+
+>>select ename as Employee_Name from employee where ename like '%A%';
+
+
+Output:-
+--------
+
+Employee_Name
+-------------
+
+ALLEN
+
+WARD
+
+MARTIN
+
+BLAKE
+
+CLARK
+
+ADAMS
+
+JAMES
+
+
+7. Find out the names of all employees that have ‘L’ as their third character in their name.
+
+Query:-
+-------
+
+>> select ename as Employee_Name from employee where ename like '__L%';
+
+
+Output:-
+--------
+
+Employee_Name
+-------------
+
+ALLEN
+
+MILLER
+
+
+8. Find out the names of the employees whose name begin with ‘A’ or ‘M’. 
+
+Query:-
+---------
+
+>>select ename as Employee_Name from employee where ename like in ('A%' or 'M%');
+
+
+Output:-
+--------
+
+Employee_Name
+--------------
+
+ALLEN
+
+MARTIN
+
+ADAMS
+
+MILLER
+
+
+9. Compute yearly salary of SMITH. 
+
+Query:-
+-------
+
+>>select (sal*12) as Yearly_Salary_Of_SMITH from employee where ename='SMITH';
+
+Output:-
+--------
+
+Yearly_Salary_Of_SMITH
+----------------------
+
+9600
+
+
+10. Compute daily salary of JONES. 
+
+Query:-
+-------
+
+>>select (sal/30) as Daily_Salary_Of_JONES from employee where ename='JONES';
+
+--here we divide by 30 -- average no of days in month of year
+
+Output:-
+--------
+
+Daily_Salary_Of_JONES
+---------------------
+
+	99
+
+
+11. Calculate the total monthly salary of all employees.
+
+Query:-
+-------
+
+>> select sum(sal) as Total_monthly_Salary_Of_All_Employee from employee;
+
+
+Output:-
+--------
+
+Total_monthly_Salary_Of_All_Employee
+-------------------------------------
+
+	29025
+
+
+
+12. Print the average annual salary
+
+Query:-
+--------
+
+>>select avg(sal) as Average_Annual_Salary from employee;
+
+
+Output:-
+--------
+
+Average_Annual_Salary
+---------------------
+	2073
+
+
+13.Select the name, job, salary, department number of all employees except SALESMAN from department number 30.
+
+Query:-
+------
+
+>>SELECT ename as Employee_Name,job as Job,sal as Salary,deptno as Department_Number from employee where job !='SALESMAN' and deptno!=30;
+
+Output:-
+--------
+
+ Employee_Name		Job		Salary		Department_Number
+---------------	       ------         ----------        ------------------
+
+SMITH			CLERK		800			20
+
+JONES			MANAGER		2975			20
+
+CLARK			MANAGER		2450			10
+
+SCOTT			ANALYST		3000			20
+
+KING			PRESIDENT	5000			10
+
+ADAMS			CLERK		1100			20
+			
+FORD			ANALYST		3000			20		
+
+MILLER			CLERK		1300			10
+
+
+
+14. List unique departments of the EMP table. 
+
+Query:-
+-------
+
+>>select DISTINCT(deptno) as Unique_department_Number from employee
+
+Output:-
+-------
+
+Unique_department_Number
+------------------------
+
+	10
+
+	20
+		
+	30
+
+
+15. List the name and salary of employees who earn more than 1500 and are in department 10 or 30. Label the columns Employee and Monthly Salary respectively.
+
+Query:-
+--------
+
+
+>>select ename as Employee_Name,sal as Salary from employee where sal>1500 and (deptno=10 or deptno=30);
+
+
+Output:-
+--------
+
+Employee_Name		Salary
+-------------		------
+
+ALLEN			1600
+
+BLAKE			2850
+
+CLARK			2450
+
+KING			5000
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,439 @@
+
+1. This command is used to create a department table name as "dept":-
+
+>>create table dept(deptno int not null,dname varchar(20),loc varchar(20));
+
+------------------------------------------------------------------------------------------------
+2. these commands are used to insert the data into dept table:-
+
+>>insert into dept values(10,'accounting','new york');
+
+
+>>insert into dept values(20,'research','dallas'),(30,'sales','chicago'),(40,'operations','boston');
+
+--------------------------------------------------------------------------------------------------
+
+3. this command is used to retrive the data from dept table:-
+
+
+>>select * from dept;
+
+
+Output:-
+---------
+
+
+DEPTNO		DNAME		LOC 
+----- 		------		----			       	  
+10     		ACCOUNTING   	NEW YORK 
+20     		RESEARCH      	DALLAS 
+30     		SALES         	CHICAGO 
+40     		OPERATIONS   	BOSTON 
+
+------------------------------------------------------------------------------------------------------
+
+4.This command is used to create a employee table name as "employee":-
+
+
+>>create table employee(empno int not null,ename varchar(20),job varchar(20),mgr int,hiredate date,sal int,comm int,deptno int);
+
+--------------------------------------------------------------------------------------------------------------------------
+5.these commands are used to insert the data into employee table:-
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+values(7369,'SMITH','CLERK',7902,'17-DEC-80',800,20);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)
+values(7499,'ALLEN','SALESMAN',7698,'20-FEB-81',1600,300,30);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)
+values(7521,'WARD','SALESMAN',7698,'22-FEB-81',1250,500,30);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7566,'JONES','MANAGER',7839,'02-APR-81',2975,20);
+
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)
+ values(7654,'MARTIN','SALESMAN',7698,'28-SEP-81',1250,1400,30);
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7698,'BLAKE','MANAGER',7839,'01-MAY-81',2850,30);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7782,'CLARK','MANAGER',7839,'09-JUN-81',2450,10);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7788,'SCOTT','ANALYST',7566,'19-APR-87',3000,20);
+
+
+>>insert into employee(empno,ename,job,hiredate,sal,deptno)
+ values(7839,'KING','PRESIDENT','17-NOV-81',5000,10);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,comm,deptno)
+ values(7844,'TURNER','SALESMAN',7698,'08-SEP-81',1500,0,30);
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7876,'ADAMS','CLERK',7788,'23-MAY-87',1100,20);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7900,'JAMES','CLERK',7698,'03-DEC-81',950,30);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7902,'FORD','ANALYST',7566,'03-DEC-81',3000,20);
+
+
+>>insert into employee(empno,ename,job,mgr,hiredate,sal,deptno)
+ values(7934,'MILLER','CLERK',7782,'23-JAN-82',1300,10);
+
+--------------------------------------------------------------------------------
+
+6.this command is used to retrive the data from employee table:-
+
+>>select * from employee;
+
+
+Output:-
+--------
+
+EMPNO   ENAME     JOB   	MGR   HIREDATE      	 SAL     COMM   DEPTNO
+-----	-----	-------	       ----  --------- 		---- 	------	-----
+7369    SMITH      CLERK	7902   	17-DEC-80     	 800	  NULL   20
+7499    ALLEN      SALESMAN     7698    20-FEB-81    	 1600     300    30
+7521    WARD	  SALESMAN      7698    22-FEB-81  	 1250     500    30
+7566    JONES     MANAGER       7839    02-APR-81   	 2975     NULL   20
+7654    MARTIN    SALESMAN      7698    28-SEP-81  	 1250     1400   30
+7698	BLAKE 	  MANAGER 	7839 	01-MAY-81    	 2850     NULL   30
+7782  	CLARK     MANAGER       7839    09-JUN-81   	 2450     NULL   10
+7788  	SCOTT     ANALYST       7566    19-APR-87        3000     NULL   20
+7839    KING      PRESIDENT      NULL   17-NOV-81        5000     NULL   10
+7844    TURNER    SALESMAN      7698    08-SEP-81    	 1500      0     30
+7876    ADAMS     CLERK         7788    23-MAY-87        1100     NULL   20
+7900    JAMES     CLERK         7698    03-DEC-81  	  950     NULL   30
+7902    FORD      ANALYST       7566    03-DEC-81   	 3000     NULL	 20
+7934    MILLER    CLERK         7782    23-JAN-82	 1300     NULL   10
+
+---------------------------------------------------------------------------------------
+
+Write and execute the necessary SQL statements to perform the following tasks. 
+
+1. List all employees whose name begins with 'A'.
+
+
+Query:-
+------
+
+>>select ename as Employee_Name from employee where ename like 'A%';
+
+Output:-
+------
+Employee_Name
+------------
+ALLEN
+
+ADAMS
+
+
+
+2. Select all those employees who don't have a manager. 
+
+Query:-
+------
+
+>>select ename as Employee_name from employee where mgr is Null
+
+Output:-
+-------
+
+KING
+
+
+3. List employee name, number and salary for those employees who earn in the range 1200 to 1400. 
+
+Query:-
+------
+
+>>select empno as Employee_id,ename as Employee_Name,sal as Salary from employee where sal between 1200 and 1400;
+
+
+Ouput:-
+-----
+
+Employee_id        Employee_Name        Salary
+-----------        -------------        -------
+
+7521		    WARD		1250
+
+7654		    MARTIN		1250
+
+7934		    MILLER		1300
+
+
+
+4.Give all the employees in the RESEARCH department a 10% pay rise. Verify that this has been done by listing all their details before and after the rise. 
+
+Query:-
+------
+Before 10% pay raise:-
+____________________
+
+>>select ename as Employee_Name, sal as salary_as_Raise_Before_10_percent from employee e inner join dept d on e.deptno=d.deptno where d.dname='RESEARCH';
+
+
+Output:-
+-------
+
+Employee_Name		Salary_as_Raise_Before_10_percent
+--------------		----------------------------------
+
+SMITH				800
+
+JONES				2975
+
+SCOTT				3000
+
+ADAMS				1100		
+
+FORD				3000
+
+
+After 10% pay Raise:-
+______________________
+
+
+>>select ename as Employee_Name,(sal+sal*0.1) as salary_as_Raise_After_10_Percent from employee e inner join dept d on e.deptno=d.deptno where d.dname='RESEARCH';
+
+
+Output:-
+--------
+
+Employee_Name		Salary_as_Raise_After_10_percent
+-------------		--------------------------------
+
+SMITH				880.0
+
+JONES				3272.5
+
+SCOTT				3300.0
+
+ADAMS				1210.0			
+
+FORD				3300.0
+
+
+5. Find the number of CLERKS employed. Give it a descriptive heading. 
+
+
+Query:-
+------
+
+>>select count(*) as No_Of_Employee_Worked_As_Clerk from employee where job='CLERK';
+
+
+Output:-
+--------
+
+No_Of_Employee_Worked_As_Clerk
+--------------------------------
+
+	4
+
+6. Find the average salary for each job type and the number of people employed in each job. 
+
+Query:-
+-------
+
+>>select job  as Type_Of_Job,avg(sal) as Average_Salary,count(*) as No_Of_Employee_in_Each_Job from employee group by job;
+
+Output:-
+--------
+
+Type_Of_Job		Average_Salary		No_Of_Employee_in_Each_Job
+------------		--------------		--------------------------
+
+ANALYST			3000				2
+
+CLERK			1037				4
+
+MANAGER			2758				3
+
+PRESIDENT		5000				1
+
+SALESMAN		1400				4
+
+
+
+7. List the employees with the lowest and highest salary.
+
+Query:-
+-------
+
+>>select min(sal),max(sal) from employee;
+
+Output:-
+--------
+
+Lowest_Salary		Highest_Salary
+------------		--------------
+
+800			  5000 
+
+
+8. List full details of departments that don't have any employees. 
+
+Query:-
+------
+
+>>select deptno as Department_No,dname as Department_Name,loc as Location from dept where deptno not in (select deptno from employee);
+
+
+Output:-
+--------
+
+Department_No		Department_Name		Location
+-------------		---------------		--------
+
+    40			  operations		  boston
+
+
+9. Get the names and salaries of all the analysts earning more than 1200 who are based in department 20. Sort the answer by ascending order of name. 
+
+Query:-
+-------
+
+>>select ename as Employee_Name,sal as Salary from employee where sal > 1200 and deptno=20 order by ename
+
+Output:-
+--------
+
+Employee_Name		Salary
+-------------		------
+
+FORD			3000
+
+JONES			2975
+
+SCOTT			3000
+
+
+10. For each department, list its name and number together with the total salary paid to employees in that department. 
+
+Query:-
+-------
+
+>> select d.deptno as Department_No,d.dname as Department_Name,sum(sal) AS Total_Salary from dept d inner join employee e on e.deptno=d.deptno
+group by d.deptno,d.dname
+
+Output:-
+--------
+
+Department_No		Department_Name		Total_Salary
+-------------		---------------		------------
+
+10			accounting		8750
+
+20			research		10875
+
+30			sales			9400
+
+
+
+11. Find out salary of both MILLER and SMITH.
+
+Query:-
+-------
+
+(MDR 2022033 520 0001)
+
+>>select ename as Employee_Name,sal as Salary from employee where ename='MILLER'OR ename='SMITH';
+
+
+Output:-
+--------
+
+Employee_Name		Salary
+-------------		------
+
+MILLER			800
+
+SMITH			1300
+
+
+12. Find out the names of the employees whose name begin with ‘A’ or ‘M’. 
+
+Query:-
+-------
+
+>> select ename as Employee_Name from employee where ename like'A%' or ename like 'M%';
+
+Output:-
+-------
+
+Employee_Name
+-------------
+
+ALLEN
+
+MARTIN
+
+ADAMS
+
+MILLER
+
+
+13. Compute yearly salary of SMITH.
+
+Query:-
+------
+
+>>select (sal*12) as Yearly_Salary from employee where ename='SMITH';
+
+
+Output:-
+--------
+9600
+
+
+14. List the name and salary for all employees whose salary is not in the range of 1500 and 2850. 
+
+Query:-
+-------
+
+>> select ename as Employee_Name,sal As Salary from employee where sal not between 1500 and 2850;
+
+
+Output:-
+--------
+
+Employee_Name		Salary
+-------------		------
+
+SMITH			800
+
+WARD			1250
+
+JONES			2975
+
+MARTIN			1250
+
+SCOTT			3000
+
+KING			5000
+
+ADAMS			1100
+
+JAMES			950
+
+FORD			3000
+
+MILLER			1300
+
