@@ -1,0 +1,155 @@
+1.	Write a T-SQL Program to generate complete payslip of a given employee with respect to the following condition
+a)	HRA  as 10% Of sal
+b)	DA as  20% of sal
+c)	PF as 8% of sal
+d)	IT as 5% of sal
+e)	Deductions as sum of PF and IT
+f)	Gross Salary as sum of SAL,HRA,DA and Deductions
+g)	Net salary as  Gross salary- Deduction
+
+Program:-
+---------
+
+declare@sal float = 25744,@HRA float,@DA float,@PF float,@IT float,@Deduction float,@Gross_Salary float,@Net_Salary float;
+begin
+	set @HRA = @sal *0.10
+	set @DA = @sal *0.20
+	set @PF = @sal *0.08
+	set @IT = @sal * 0.05
+	set @Deduction = @PF + @IT
+	set @Gross_Salary = @sal+ @HRA + @DA + @Deduction
+	set @Net_Salary = @Gross_Salary - @Deduction
+
+	print 'HRA:'		@HRA
+	print 'DA:'		@DA
+	print 'PF:'		@PF
+	print 'IT:'		@IT
+	print 'Deduction:'	@Deduction
+	print 'Gross_Salary:'	@Gross_Salary
+	print 'Net_Salary:'	@Net_Salary
+end
+
+-------------------------------------------------------------------------------------------------
+2.	Write a T-SQL Program to Display complete result of a given student. 
+(Note: Consider 10th standard result sheet and Student table structure as (sno,sname,maths,phy,comp)
+
+Program:-
+-------
+
+declare @sno int,@sname varchar(20),@maths int,@physics int,@computer int,@total int,@percentage float
+begin
+	set @sno=002
+	set @sname='Saikumar'
+	set @maths=100
+	set @phy=72
+	set @comp=87
+	set @total=(@maths+@phy+@comp)
+	set @percentage=(@total*100)/300
+	print @percentage
+	
+	create table student(sno int,sname varchar(20),maths int,physics int,computer int,total int,percentage int)
+
+	insert into student values(@sno,@sname,@maths,@phy,@comp,@total,@percentage)
+
+	select *from student
+
+end
+
+-----------------------------------------------------------------------------------------------------
+3.	Write a T-SQL Program to find the factorial of a given number.
+
+Program:-
+---------
+
+begin
+	declare @num int
+	declare @factorial int
+	set @num=6
+	set @factorial=1
+	while @num>0
+	begin
+		set @fact=@factorial*@num
+		set @num=@num-1
+	end
+	print 'Factorial of given number :'
+	print @factorial
+end
+
+--------------------------------------------------------------------------------------------------------
+4.	Create a stored procedure to generate multiplication tables up to a given number.
+
+Program:-
+---------
+
+create or alter procedure proc_mutlic
+as
+begin
+	declare @i int=1,@num int=25,@n int
+	while @i<=10
+	begin
+		set @n=@num*@i
+		print @n
+		set @i=@i+1
+	end
+end
+
+-------------------------------------------------------------------------------------------------------------------
+5.	Create a user defined function calculate Bonus for all employees of a  given job using following conditions
+a.	       For Deptno10 employees 15% of sal as bonus.
+b.	       For Deptno20 employees  20% of sal as bonus
+c.	      For Others employees 5%of sal as bonus
+
+Program:-
+---------
+
+use assignment1
+
+select * from employee
+
+create or alter function Calculate_Bonus(@ejob varchar(20))	
+	returns table
+as
+	return(select ename,job,sal,deptno from employee where job=@ejob)
+go
+	update employee set sal=sal+(sal*.15) where deptno=10
+	update employee set sal=sal+(sal*.2) where deptno=20
+	update employee set sal=sal+(sal*.05) where deptno!=10 and  deptno!=20
+
+select * from Calculate_Bonus('ANALYST')
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+6.Create a trigger to restrict data manipulation on EMP table during General holidays. 
+
+Display the error message like “Due to Independence day you cannot manipulate data”
+
+Note: Create holiday table as (holiday_date,Holiday_name) store at least 4 holiday details
+
+Program:-
+--------
+
+--This command is used to create a table as name "holiday"
+create table holiday(holiday_date varchar2(20),holiday_name varchar2;(20))
+
+
+--This command is used to insert the data into the holiday table
+insert into holiday values
+('13-jan-2022','Makar Sankranti'),
+('01-mar-2022','Maha Shivaratri'),
+('07-apr-2022','Ugadi'),
+('15-apr-2022','Good Friday')
+
+
+--This command is used retrieve the data from holiday table
+select * from holiday
+
+--create a trigger
+create or alter trigger Restricted_data_manipulation
+on holiday
+instead of update
+as
+	raiserror('Due to public Holiday you cannot manipulate data')
+
+	update  holiday set holiday_date='02-aug-2022' where holiday_date='02-apr-2022'
+
+select * from holiday
