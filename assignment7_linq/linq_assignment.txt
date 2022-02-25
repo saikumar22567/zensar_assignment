@@ -1,0 +1,615 @@
+1. Create a console application and add class named Employee with following field.
+Employee Class
+EmployeeID (Integer)
+FirstName (String)
+LastName (String)
+Title (String)
+DOB (Date)
+DOJ (Date)
+City (String)
+
+
+source code:-
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace linqex
+{
+    internal class Employee
+    {
+        static void Main()
+        {
+            DataSet ds = new DataSet("Tables");
+
+            DataTable EmployeeTable = new DataTable("Employees");
+
+            DataColumn[] EmployeeTableColumn = new DataColumn[7];
+
+            EmployeeTableColumn[0] = new DataColumn("EmployeeID", System.Type.GetType("System.Int32"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[0]);
+            EmployeeTableColumn[1] = new DataColumn("FirstName", System.Type.GetType("System.String"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[1]);
+            EmployeeTableColumn[2] = new DataColumn("LastName", System.Type.GetType("System.String"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[2]);
+            EmployeeTableColumn[3] = new DataColumn("Title", System.Type.GetType("System.String"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[3]);
+            EmployeeTableColumn[4] = new DataColumn("DOB", System.Type.GetType("System.DateOnly"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[4]);
+            EmployeeTableColumn[5] = new DataColumn("DOJ", System.Type.GetType("System.DateOnly"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[5]);
+            EmployeeTableColumn[6] = new DataColumn("City", System.Type.GetType("System.String"));
+            EmployeeTable.Columns.Add(EmployeeTableColumn[6]);
+
+            DataRow EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1001";
+            EmployeeTableRows["FirstName"] = "Malcom";
+            EmployeeTableRows["LastName"] = "Daruwalla";
+            EmployeeTableRows["Title"] = "Manager";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("16/11/1984", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("08/06/2011", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Mumbai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1002";
+            EmployeeTableRows["FirstName"] = "Asdin";
+            EmployeeTableRows["LastName"] = "Dhalla";
+            EmployeeTableRows["Title"] = "AsstManager";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("20/08/1984", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("07/07/2012", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Mumbai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1003";
+            EmployeeTableRows["FirstName"] = "Madhavi";
+            EmployeeTableRows["LastName"] = "Oza";
+            EmployeeTableRows["Title"] = "Consultant";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("14/11/1987", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("12/04/2015", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Pune";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1004";
+            EmployeeTableRows["FirstName"] = "Saba";
+            EmployeeTableRows["LastName"] = "Shaikh";
+            EmployeeTableRows["Title"] = "SE";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("03/06/1990", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("02/02/2016", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Pune";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1005";
+            EmployeeTableRows["FirstName"] = "Nazia";
+            EmployeeTableRows["LastName"] = "Shaikh";
+            EmployeeTableRows["Title"] = "SE";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("08/03/1991", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("02/02/2016", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Mumbai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1006";
+            EmployeeTableRows["FirstName"] = "Amit";
+            EmployeeTableRows["LastName"] = "Pathak";
+            EmployeeTableRows["Title"] = "Consultant";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("07/11/1989", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("08/08/2014", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Chennai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1007";
+            EmployeeTableRows["FirstName"] = "Vijay";
+            EmployeeTableRows["LastName"] = "Natrajan";
+            EmployeeTableRows["Title"] = "Consultant";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("02/12/1989", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("01/06/2015", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Mumbai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1008";
+            EmployeeTableRows["FirstName"] = "Rahul";
+            EmployeeTableRows["LastName"] = "Dubey";
+            EmployeeTableRows["Title"] = "Associate";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("11/11/1993", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("06/11/2014", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Chennai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1009";
+            EmployeeTableRows["FirstName"] = "Suresh";
+            EmployeeTableRows["LastName"] = "Mistry";
+            EmployeeTableRows["Title"] = "Associate";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("12/08/1992", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("03/12/2014", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Chennai";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            EmployeeTableRows = EmployeeTable.NewRow();
+            EmployeeTableRows["EmployeeID"] = "1010";
+            EmployeeTableRows["FirstName"] = "Sumit";
+            EmployeeTableRows["LastName"] = "Shah";
+            EmployeeTableRows["Title"] = "Manager";
+            EmployeeTableRows["DOB"] = DateOnly.ParseExact("12/04/1991", "dd/MM/yyyy");
+            EmployeeTableRows["DOJ"] = DateOnly.ParseExact("02/01/2016", "dd/MM/yyyy");
+            EmployeeTableRows["City"] = "Pune";
+            EmployeeTable.Rows.Add(EmployeeTableRows);
+
+            ds.Tables.Add(EmployeeTable);
+
+            Console.WriteLine("\n");
+            Console.WriteLine("EmployeeID\t  FirstName\t  LastName\t  Title\t  DOB\t DOJ\t  City");
+           
+            foreach (DataRow row in EmployeeTable.Rows)
+            {
+                Console.WriteLine("{0}\t  {1}\t {2}\t  {3}\t  {4}\t  {5}\t  {6} ", row["EmployeeID"], row["FirstName"], row["LastName"], row["Title"], row["DOB"], row["DOJ"], row["City"]);
+            }
+
+            Console.Read();
+
+        }
+    }
+}
+
+OUTPUT:-
+--------
+
+EmployeeID 	FirstName	 LastName 	Title 		DOB 		DOJ 		City
+1001		Malcolm 	Daruwalla 	Manager 	16/11/1984 	8/6/2011 	Mumbai
+1002 		Asdin		 Dhalla 	AsstManager 	20/08/1984 	7/7/2012 	Mumbai
+1003 		Madhavi 	Oza 		Consultant 	14/11/1987 	12/4/2015 	Pune
+1004 		Saba 		Shaikh		 SE 		3/6/1990	 2/2/2016	 Pune
+1005 		Nazia 		Shaikh 		SE 		8/3/1991 	2/2/2016	 Mumbai
+1006 		Amit 		Pathak 		Consultant 	7/11/1989 	8/8/2014 	Chennai
+1007 		Vijay 		Natrajan 	Consultant 	2/12/1989	 1/6/2015 	Mumbai
+1008 		Rahul 		Dubey 		Associate	 11/11/1993 	6/11/2014	 Chennai
+1009 		Suresh 		Mistry		 Associate 	12/8/1992 	3/12/2014 	Chennai
+1010 		Sumit 		Shah 		Manager 	12/4/1991 	2/1/2016 	Pune
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+2. Create a Generic List Collection empList and populate it with the following records.
+
+
+
+EmployeeID 	FirstName	 LastName 	Title 		DOB 		DOJ 		City
+1001		Malcolm 	Daruwalla 	Manager 	16/11/1984 	8/6/2011 	Mumbai
+1002 		Asdin		 Dhalla 	AsstManager 	20/08/1984 	7/7/2012 	Mumbai
+1003 		Madhavi 	Oza 		Consultant 	14/11/1987 	12/4/2015 	Pune
+1004 		Saba 		Shaikh		 SE 		3/6/1990	 2/2/2016	 Pune
+1005 		Nazia 		Shaikh 		SE 		8/3/1991 	2/2/2016	 Mumbai
+1006 		Amit 		Pathak 		Consultant 	7/11/1989 	8/8/2014 	Chennai
+1007 		Vijay 		Natrajan 	Consultant 	2/12/1989	 1/6/2015 	Mumbai
+1008 		Rahul 		Dubey 		Associate	 11/11/1993 	6/11/2014	 Chennai
+1009 		Suresh 		Mistry		 Associate 	12/8/1992 	3/12/2014 	Chennai
+1010 		Sumit 		Shah 		Manager 	12/4/1991 	2/1/2016 	Pune
+
+
+source code:-
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace linqex
+{
+    internal class Employees
+    {
+        int EmployeeId;
+        string FirstName;
+        string LastName;
+        string Title;
+        DateOnly DOB;
+        DateOnly DOJ;
+        string City;
+        static void Main(string[] args)
+        {
+
+            List<Employees> empList = new List<Employees>()
+            {
+                new Employees() { EmployeeId = 1001, FirstName ="Malcom",LastName="Daruwalla",Title="Manager",DOB=DateOnly.ParseExact("16/11/1984","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("08/06/2011","d"),City="Mumbai"},
+                new Employees() { EmployeeId = 1002, FirstName ="Asdin",LastName="Dhalla",Title="AsstManager",DOB=DateOnly.ParseExact("20/08/1984","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("07/06/2012","dd/MM/yyyy"),City="Mumbai"},
+                new Employees() { EmployeeId = 1003, FirstName ="Madhavi",LastName="Oza",Title="Consultant",DOB=DateOnly.ParseExact("14/11/1987","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("12/04/2015","dd/MM/yyyy"),City="Pune"},
+                new Employees() { EmployeeId = 1004, FirstName ="Saba",LastName="Shaikh",Title="SE",DOB=DateOnly.ParseExact("03/06/1990","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("02/02/2016","dd/MM/yyyy"),City="Pune"},
+                new Employees() { EmployeeId = 1005, FirstName ="Nazia",LastName="Shaikh",Title="SE",DOB=DateOnly.ParseExact("08/03/1991","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("02/02/2016","dd/MM/yyyy"),City="Mumbai"},
+                new Employees() { EmployeeId = 1006, FirstName ="Amit",LastName="Pathak",Title="Consultant",DOB=DateOnly.ParseExact("07/11/1989","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("08/02/2014","dd/MM/yyyy"),City="Chennai"},
+                new Employees() { EmployeeId = 1007, FirstName ="Vijay",LastName="Natrajan",Title="Consultant",DOB=DateOnly.ParseExact("02/12/1989","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("01/06/2015","dd/MM/yyyy"),City="Mumbai"},
+                new Employees() { EmployeeId = 1008, FirstName ="Rahul",LastName="Dubey",Title="Associate",DOB=DateOnly.ParseExact("11/11/1993","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("06/11/2014","dd/MM/yyyy"),City="Chennai"},
+                new Employees() { EmployeeId = 1009, FirstName ="Suresh",LastName="Mistry",Title="Associate",DOB=DateOnly.ParseExact("12/08/1992","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("03/12/2014","dd/MM/yyyy"),City="Chennai"},
+                new Employees() { EmployeeId = 1010, FirstName ="Sumit",LastName="Shah",Title="Manager",DOB=DateOnly.ParseExact("12/04/1991","dd/MM/yyyy"),DOJ=DateOnly.ParseExact("02/01/2016","dd/MM/yyyy"),City="Pune"},
+            };
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.EmployeeId+"\t" + item.FirstName+"\t" + item.LastName+"\t" + item.Title+"\t"+item.DOB+"\t"+item.DOJ+"\t"+item.City);
+            }
+            Console.Read();
+        }
+    }
+}
+
+
+OUTPUT:-
+--------
+
+1001    Malcom  Daruwalla       Manager 	11/16/1984      8/6/2011        Mumbai
+1002    Asdin   Dhalla  	AsstManager     8/20/1984       6/7/2012        Mumbai
+1003    Madhavi Oza     	Consultant      11/14/1987      4/12/2015       Pune
+1004    Saba    Shaikh  	SE      	6/3/1990        2/2/2016        Pune
+1005    Nazia   Shaikh  	SE      	3/8/1991        2/2/2016        Mumbai
+1006    Amit    Pathak  	Consultant      11/7/1989       2/8/2014        Chennai
+1007    Vijay   Natrajan        Consultant      12/2/1989       6/1/2015        Mumbai
+1008    Rahul   Dubey   	Associate       11/11/1993      11/6/2014       Chennai
+1009    Suresh  Mistry  	Associate       8/12/1992       12/3/2014       Chennai
+1010    Sumit   Shah    	Manager 	4/12/1991       1/2/2016        Pune
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+a. Display detail of all the employee
+
+source code:-
+------------
+
+
+ foreach (var item in empList)
+            {
+                Console.WriteLine(item.EmployeeId+"\t" + item.FirstName+"\t" + item.LastName+"\t" + item.Title+"\t"+item.DOB+"\t"+item.DOJ+"\t"+item.City);
+            }
+
+OUTPUT:-
+-------
+
+1001    Malcom  Daruwalla       Manager 	11/16/1984      8/6/2011        Mumbai
+1002    Asdin   Dhalla  	AsstManager     8/20/1984       6/7/2012        Mumbai
+1003    Madhavi Oza     	Consultant      11/14/1987      4/12/2015       Pune
+1004    Saba    Shaikh  	SE      	6/3/1990        2/2/2016        Pune
+1005    Nazia   Shaikh  	SE      	3/8/1991        2/2/2016        Mumbai
+1006    Amit    Pathak  	Consultant      11/7/1989       2/8/2014        Chennai
+1007    Vijay   Natrajan        Consultant      12/2/1989       6/1/2015        Mumbai
+1008    Rahul   Dubey   	Associate       11/11/1993      11/6/2014       Chennai
+1009    Suresh  Mistry  	Associate       8/12/1992       12/3/2014       Chennai
+1010    Sumit   Shah    	Manager 	4/12/1991       1/2/2016        Pune
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+b. Display details of all the employee whose location is not Mumbai
+
+source code:-
+-----------
+
+
+ var myquery = empList.Where(emp => emp.City!="Mumbai");
+            
+            foreach (var item in myquery)
+            {
+                Console.WriteLine(item.EmployeeId + "\t" + item.FirstName + "\t" + item.LastName + "\t" + item.Title + "\t" + item.DOB + "\t" + item.DOJ + "\t" + item.City);
+            }
+
+OUTPUT:-
+-------
+
+1003    Madhavi Oza     Consultant      11/14/1987      4/12/2015       Pune
+1004    Saba    Shaikh  SE      	6/3/1990        2/2/2016        Pune
+1006    Amit    Pathak  Consultant      11/7/1989       2/8/2014        Chennai
+1008    Rahul   Dubey   Associate       11/11/1993      11/6/2014       Chennai
+1009    Suresh  Mistry  Associate       8/12/1992       12/3/2014       Chennai
+1010    Sumit   Shah    Manager 	4/12/1991       1/2/2016        Pune
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+c. Display details of all the employee whose title is AsstManager
+
+source code:-
+------------
+
+ var myquery = empList.Where(emp => emp.Title=="AsstManager");
+            
+            foreach (var item in myquery)
+            {
+                Console.WriteLine(item.EmployeeId + "\t" + item.FirstName + "\t" + item.LastName + "\t" + item.Title + "\t" + item.DOB + "\t" + item.DOJ + "\t" + item.City);
+            }
+
+OUTPUT:
+
+1002    Asdin   Dhalla  AsstManager     8/20/1984       6/7/2012        Mumbai
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+d. Display details of all the employee whose Last Name start with S
+
+source code:-
+------------
+ 
+var myquery = from ed in empList
+                           where ed.LastName.StartsWith("S")
+                           select ed;
+
+
+            foreach (var item in myquery)
+            {
+                Console.WriteLine(item.EmployeeId + "\t" + item.FirstName + "\t" + item.LastName + "\t" + item.Title + "\t" + item.DOB + "\t" + item.DOJ + "\t" + item.City);
+            }
+
+OUTPUT:-
+--------
+
+1004    Saba    Shaikh  SE      6/3/1990        2/2/2016        Pune
+1005    Nazia   Shaikh  SE      3/8/1991        2/2/2016        Mumbai
+1010    Sumit   Shah    Manager 4/12/1991       1/2/2016        Pune
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+e. Display a list of all the employee who have joined before 1/1/2015
+
+source code:-
+------------
+
+var myquery = empList.Where(x => x.DOJ<DateOnly.ParseExact("1/1/2015","d"));
+            foreach (var item in myquery)
+                {
+                    Console.WriteLine(item.EmployeeId + "\t" + item.FirstName + "\t" + item.LastName + "\t" + item.Title + "\t" + item.DOB + "\t" + item.DOJ + "\t" + item.City);
+                }
+
+OUTPUT:-
+--------
+
+1001    Malcom  Daruwalla       Manager 11/16/1984      8/6/2011        Mumbai
+1002    Asdin   Dhalla  AsstManager     8/20/1984       6/7/2012        Mumbai
+1006    Amit    Pathak  Consultant      11/7/1989       2/8/2014        Chennai
+1008    Rahul   Dubey   Associate       11/11/1993      11/6/2014       Chennai
+1009    Suresh  Mistry  Associate       8/12/1992       12/3/2014       Chennai
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+f. Display a list of all the employee whose date of birth is after 1/1/1990
+
+source code:-
+-------------
+
+var myquery = empList.Where(x => x.DOB > DateOnly.ParseExact("1/1/1990", "d"));
+            foreach (var item in myquery)
+            {
+                Console.WriteLine(item.EmployeeId + "\t" + item.FirstName + "\t" + item.LastName + "\t" + item.Title + "\t" + item.DOB + "\t" + item.DOJ + "\t" + item.City);
+            }
+
+OUTPUT:-
+---------
+
+1004    Saba    Shaikh  SE      	6/3/1990        2/2/2016        Pune
+1005    Nazia   Shaikh  SE      	3/8/1991        2/2/2016        Mumbai
+1008    Rahul   Dubey   Associate       11/11/1993      11/6/2014       Chennai
+1009    Suresh  Mistry  Associate       8/12/1992       12/3/2014       Chennai
+1010    Sumit   Shah    Manager 	4/12/1991       1/2/2016        Pune
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+g. Display a list of all the employee whose designation is Consultant and Associate
+
+source code:-
+------------
+
+var myquery = empList.Where(x => x.DOB > DateOnly.ParseExact("1/1/1990", "d"));
+            foreach (var item in myquery)
+            {
+                Console.WriteLine(item.EmployeeId + "\t" + item.FirstName + "\t" + item.LastName + "\t" + item.Title + "\t" + item.DOB + "\t" + item.DOJ + "\t" + item.City);
+            }
+
+OUTPUT:-
+--------
+
+1003    Madhavi Oza     Consultant      11/14/1987      4/12/2015       Pune
+1006    Amit    Pathak  Consultant      11/7/1989       2/8/2014        Chennai
+1007    Vijay   Natrajan        Consultant      12/2/1989       6/1/2015        Mumbai
+1008    Rahul   Dubey   Associate       11/11/1993      11/6/2014       Chennai
+1009    Suresh  Mistry  Associate       8/12/1992       12/3/2014       Chennai
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+h. Display total number of employees
+
+source code:-
+------------
+
+ var myquery = empList.Count();
+
+ Console.WriteLine("Total Number of Employees are:{0}",myquery);
+         
+OUTPUT:-
+--------
+
+Total Number of Employees are:10
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+i. Display total number of employees belonging to “Chennai”
+
+source code:-
+-------------
+
+ var myquery = empList.Count(x => x.City == "Chennai");
+
+            Console.WriteLine("Total Number of Employees in Chennai are:{0}", myquery);
+
+OUTPUT:-
+---------
+
+Total Number of Employees in Chennai are:3
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+j. Display highest employee id from the list
+
+source code:-
+------------
+
+var myquery = empList.Max(x => x.EmployeeId);
+            Console.WriteLine("The Highest Employee Id in the Table is:{0}",myquery);
+
+OUTPUT:-
+-------
+The Highest Employee Id in the Table is:1010
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+k. Display total number of employee who have joined after 1/1/2015
+
+source code:-
+-----------
+
+ var myquery = empList.Count(x => x.DOJ > DateOnly.ParseExact("1/1/2015", "d"));
+            Console.WriteLine("Total Number of Employees Joined after 1/1/2015 are:{0}",myquery);
+
+OUTPUT:-
+-------
+Total Number of Employees Joined after 1/1/2015 are:5
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+l. Display total number of employee whose designation is not “Associate”
+
+source code:-
+-----------
+
+var myquery = empList.Count(x => x.Title != "Associate");
+            Console.WriteLine("Total Number of Employees Other than Associates are:{0}",myquery);
+
+
+OUTPUT:-
+-------
+Total Number of Employees Other than Associates are:8
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+m. Display total number of employee based on City
+
+source code:-
+------------
+
+ var myquery = from p in empList
+                            group p by p.City into g
+                                 select new { City = g.Key , ProductCount = g.Count() };
+            Console.WriteLine("City\t   No.of Employees");
+            foreach (var group in myquery)
+            {
+                Console.WriteLine(group.City  +"\t\t"+group.ProductCount );
+            }
+
+OUTPUT:-
+------
+
+City       No.of Employees
+Mumbai          4
+Pune            3
+Chennai         3
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+n. Display total number of employee based on city and title
+
+source code:-
+-------------
+
+based on city:-
+--------------
+var myquery = from p in empList
+                            group p by p.City into g
+                                 select new { City = g.Key , ProductCount = g.Count() };
+            Console.WriteLine("City\t   No.of Employees");
+            foreach (var group in myquery)
+            {
+                Console.WriteLine(group.City  +"\t\t"+group.ProductCount );
+            }
+
+OUTPUT:-
+-------
+City       No.of Employees
+Mumbai          4
+Pune            3
+Chennai         3
+
+
+
+
+based on title:-
+---------------
+ var myquery = from t in empList
+                            group t by t.Title into g
+                            select new { Title = g.Key, ProductCount = g.Count() };
+            Console.WriteLine("Ttile\t   No.of Employees");
+            foreach (var group in myquery)
+            {
+                Console.WriteLine(group.Title + "\t\t" + group.ProductCount);
+            }
+
+OUTPUT:
+
+Ttile      	No.of Employees
+Manager         	2
+AsstManager             1
+Consultant              3
+SE              	2
+Associate               2
+
+
+======================================================================================================
+
+
+o. Display total number of employee who is youngest in the list
+
+source code:-
+------------
+
+ var myquery1 = empList.Max(x => x.DOB);
+            var myquery = empList.Where(x => x.DOB==myquery1);
+            
+            foreach (var item in myquery)
+            {
+                Console.WriteLine("The youngest Employee Of All the Employees is : {0} {1}", item.FirstName ,item.LastName );
+            }
+
+OUTPUT:-
+--------
+
+The youngest Employee Of All the Employees is : Rahul Dubey
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
