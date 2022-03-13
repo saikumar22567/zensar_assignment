@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace asplistassign
+{
+    public partial class listform : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+
+                string[] str = new string[] { "Select ", "Dell", "Hp", "Apple", "Lenovo"};
+                for (int i = 0; i < str.Length; i++)
+                {
+                    DropDownList1.Items.Add(str[i]);
+                }
+            }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string str = DropDownList1.Text;
+            Image1.ImageUrl = "~/images/" + str + ".jpg";
+
+
+            if (DropDownList1.Items.FindByText("Dell").Selected == true)
+            {
+                Label1.Text = "65000/-";
+            }
+            else if (DropDownList1.Items.FindByText("Hp").Selected == true)
+            {
+                Label1.Text = "49000/-";
+            }
+            else if (DropDownList1.Items.FindByText("Apple").Selected == true)
+            {
+                Label1.Text = "105000/-";
+            }
+            
+            else
+            {
+                Label1.Text = "35000/-";
+            }
+
+        }
+
+    }
+}
