@@ -1,0 +1,10 @@
+@{
+    ViewBag.Title = "Cust_Res_Germany";
+}
+
+<h2>Cust_Res_Germany</h2>
+
+@foreach (var item in Model)
+{
+<li>@item</li>            
+}
